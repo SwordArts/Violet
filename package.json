@@ -1,7 +1,7 @@
 {
   "name": "violet",
   "version": "1.0.0",
-  "description": "A Discord bot boilerplate for discord.js",
+  "description": "A simple and cool \"multipurpose\" bot.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
