@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/SwordArts/Violet/issues"
   },
-  "homepage": "https://github.com/SwordArts/Violet#readme"
+  "homepage": "https://github.com/SwordArts/Violet#readme",
+  "dependencies": {
+    "discord.js": "^12.1.1"
+  }
 }
