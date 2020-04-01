@@ -1,0 +1,26 @@
+{
+  "name": "violet",
+  "version": "1.0.0",
+  "description": "A Discord bot boilerplate for discord.js",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SwordArts/Violet.git"
+  },
+  "keywords": [
+    "discord-bot",
+    "boilerplate",
+    "template",
+    "discord",
+    "bot"
+  ],
+  "author": "SamuraiStacks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SwordArts/Violet/issues"
+  },
+  "homepage": "https://github.com/SwordArts/Violet#readme"
+}
