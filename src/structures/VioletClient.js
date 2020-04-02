@@ -5,6 +5,7 @@ class VioletClient extends Discord.Client {
 		super(options)
 
 		this.config = require("../../config.json")
+		this.log = new (require("./VioletLogger.js"))()
 	}
 }
 

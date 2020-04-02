@@ -1,3 +1,5 @@
 module.exports = {
-	Client: require("./VioletClient.js")
+	Client: require("./structures/VioletClient.js"),
+	Log: require("./structures/VioletLogger.js"),
+	BaseCommand: require("./BaseCommand.js")
 }
