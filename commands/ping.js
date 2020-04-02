@@ -13,6 +13,9 @@ module.exports = class PingCommand extends BaseCommand {
 	}
 
 	async run(violet, msg) {
-		msg.channel.send("Pong!")
+		const m = await msg.channel.send("Pong...?")
+		m.edit(`🏓 Pong!
+	📧 Message: \`${m.createdTimestamp - msg.createdTimestamp}ms\`
+	💓 Heartbeat: \`${violet.ws.ping}ms\``)
 	}
 }
