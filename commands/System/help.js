@@ -5,7 +5,7 @@ class HelpCommand extends BaseCommand {
 		super(violet, {
 			info: {
 				name: "help",
-				description: "Shows all the commands that I have."
+				description: "Shows all the commands that I have.",
 				usage: "help [command]"
 			},
 			settings: {
