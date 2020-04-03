@@ -21,7 +21,7 @@ class CatCommand extends BaseCommand {
 	    const json = await res.json()
 	    msg.channel.send({embed: {
 	        color: 0xFF5733,
-	        description: "Aww it's a cute lil cat!",
+	        description: "So this is what you call a cat..? Very nice.",
 	        image: {
 	            url: json.file
 	        }
