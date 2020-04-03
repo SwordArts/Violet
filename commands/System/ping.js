@@ -9,7 +9,7 @@ module.exports = class PingCommand extends BaseCommand {
 			},
 			settings: {
 				aliases: [],
-				category: "Fun"
+				category: "System"
 			}
 		})
 	}
