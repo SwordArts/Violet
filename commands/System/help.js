@@ -8,80 +8,45 @@ class HelpCommand extends BaseCommand {
 				description: "Shows all the commands that I have."
 			},
 			settings: {
-				aliases: [],
+				aliases: ["h", "commands"],
                 category: "System"
 			}
 		})
 	}
 
 	async run(violet, msg, args) {
-        let pages = {}
+        if(!args[0]) {
+            let fields = []
 
-        for (var i = 0; i < violet.commands.categories.length; i++) {
-            const categories = violet.commands.categories;
-            console.log(categories[i])
-            const cmds = violet.commands.filter(c => c.settings.category === categories[i])
-            .map(c => `${c.info.name} - ${c.info.description}`)
-            pages[i] = {
-                title: `Command category: ${categories[i]}`,
-                description: cmds.join("\n")
+            for (var i = 0; i < violet.commands.categories.length; i++) {
+                const categories = violet.commands.categories;
+                const cmds = violet.commands.filter(c => c.settings.category === categories[i])
+                .map(c => `\`${c.info.name}\``)
+                fields[i] = {
+                    name: categories[i],
+                    value: cmds.join(", ")
+                }
             }
-            console.log(Object.keys(pages).length)
-        }
-
-        let options = {
-            limit: 10 * 1000,
-            min: 0,
-            max: Object.keys(pages).length - 1,
-            page: 0
-        }
-
-		const m = await msg.channel.send({ embed: pages[options.page] });
-		  
-		await m.react("⏪");
-		await m.react("⏩");
-		await m.react("🗑");
-
-		const filter = (reaction, user) => {
-			return ['⏪', '⏩', '🗑'].includes(reaction.emoji.name) && user.id == msg.author.id;
-		}
-
-        awaitReactions(msg, m, options, filter)
-
-        async function awaitReactions(msg, m, options, filter) {
-
-            m.awaitReactions(filter, { max: 1, time: options.limit, errors: ['time'] }).then(async c => {
-            const r = c.first();
-            if (r.emoji.name === "⏪") {
-                await removeReaction(m, msg, "⏪")
-
-                if(options.page !== options.min) {
-                    await m.edit({ embed: pages[options.page - 1]})
-                    options.page--
-                }
-                awaitReactions(msg, m, options, filter)
-            } else if (r.emoji.name === "⏩") {
-                await removeReaction(m, msg, "⏩");
-
-                if (options.page !== options.max) {
-                    await m.edit({ embed: pages[options.page + 1] });
-                    options.page++
-                }
-                awaitReactions(msg, m, options, filter);
-            } else if (r.emoji.name === "🗑") {
-                await m.delete();
-                return;
+            msg.channel.send({embed: {
+                color: 0x0,
+                fields: fields
+            }})
+        } else {
+            if(violet.commands.has(args[0])) {
+                const cmd = violet.commands.get(args[0])
+                msg.channel.send({embed: {
+                    color: 0x0,
+                    thumbnail: {
+                        url: violet.user.displayAvatarURL({ format: "png", dynamic: true, size: 512})
+                    },
+                    author: {
+                        name: `Details for the command ${args[0]}.`,
+                        icon_url: msg.author.displayAvatarURL()
+                    },
+                    description: `${cmd.info.description}\nAliases: ${cmd.settings.aliases.length !== 0 ? `\`${cmd.settings.aliases.join("`, `")}\`` : "None."}`
+                }})
             } else {
-                awaitReactions(msg, m, options, filter);
-            }
-            }).catch(() => {})
-        }
-
-        async function removeReaction (m, msg, emoji) {
-            try { 
-                m.reactions.cache.find(r => r.emoji.name == emoji).users.remove(msg.author.id); 
-            } catch(err) {
-                console.log(err)
+                msg.channel.send("Sorry, I could not find that command.")
             }
         }
 	}
