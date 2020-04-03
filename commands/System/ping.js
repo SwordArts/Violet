@@ -1,13 +1,15 @@
-const BaseCommand = require("../src/Structures.js").BaseCommand
+const BaseCommand = require("../../src/Structures.js").BaseCommand
 
 module.exports = class PingCommand extends BaseCommand {
-	constructor(violet, msg) {
+	constructor(violet) {
 		super(violet, {
 			info: {
-				name: "ping"
+				name: "ping",
+				description: "See how long it takes for me to respond."
 			},
 			settings: {
-				aliases: []
+				aliases: [],
+				category: "Fun"
 			}
 		})
 	}

@@ -17,8 +17,8 @@ module.exports = (violet, msg) => {
         let cmd;
         if(violet.commands.has(command)) {
             cmd = violet.commands.get(command)
-        } else if(violet.aliases.get(command)) {
-            cmd = violet.commands.get(violet.aliases.get(command))
+        } else if(violet.commands.aliases.get(command)) {
+            cmd = violet.commands.get(violet.commands.aliases.get(command))
         } else {
             return;
         }

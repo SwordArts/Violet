@@ -9,8 +9,8 @@ class VioletLogger {
 		console.log(`[Events] ${msg}`)
 	}
 
-	shards(id, msg) {
-		console.log(`[Shard: ${id}] ${msg}`)
+	shard(id, msg) {
+		console.log(`[Shard #${id}] ${msg}`)
 	}
 
 	error(msg) {

@@ -8,7 +8,8 @@ class VioletBaseCommand {
 		this.settings = {
 			aliases: opts.settings.aliases,
 			ownerOnly: opts.settings.ownerOnly,
-			hidden: opts.settings.hidden
+			hidden: opts.settings.hidden,
+			category: opts.settings.category
 		}
 	}
 }
