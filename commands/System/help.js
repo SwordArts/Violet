@@ -30,7 +30,7 @@ class HelpCommand extends BaseCommand {
         }
 
         let options = {
-            limit: 15 * 1000,
+            limit: 10 * 1000,
             min: 0,
             max: Object.keys(pages).length - 1,
             page: 0
