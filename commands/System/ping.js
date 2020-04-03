@@ -5,7 +5,8 @@ module.exports = class PingCommand extends BaseCommand {
 		super(violet, {
 			info: {
 				name: "ping",
-				description: "See how long it takes for me to respond."
+				description: "See how long it takes for me to respond.",
+				usage: "ping"
 			},
 			settings: {
 				aliases: [],

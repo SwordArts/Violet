@@ -5,7 +5,8 @@ class CatCommand extends BaseCommand {
 		super(violet, {
 			info: {
 				name: "cat",
-				description: "Get a random image of a cut cat."
+				description: "Get a random image of a cut cat.",
+				usage: "cat"
 			},
 			settings: {
 				aliases: [],
