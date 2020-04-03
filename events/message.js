@@ -15,13 +15,10 @@ module.exports = (violet, msg) => {
     const command = args.shift().toLowerCase()
     try {
         let cmd;
-        if(violet.commands.has(command)) {
-            cmd = violet.commands.get(command)
-        } else if(violet.commands.aliases.get(command)) {
-            cmd = violet.commands.get(violet.commands.aliases.get(command))
-        } else {
-            return;
-        }
+        if(!violet.commands.has(command)) return;
+        cmd = violet.commands.get(command) || violet.commands.get(violet.commands.aliases.get(command))
+
+        if(cmd.settings.ownerOnly && msg.author.id !== "439373663905513473" || cmd.settings.category === "Developer" && msg.author.id !== "439373663905513473") return msg.channel.send("Sorry, but I can't allow you to do that.")
         cmd.run(violet, msg, args)
     } catch(err) {
         violet.log.error(err)

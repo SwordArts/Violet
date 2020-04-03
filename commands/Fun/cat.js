@@ -25,7 +25,11 @@ class CatCommand extends BaseCommand {
 	        description: "So this is what you call a cat..? Very nice.",
 	        image: {
 	            url: json.file
-	        }
+	        },
+            footer: {
+               	text: `Requested by ${msg.author.tag}`
+                },
+            timestamp: Date.now()
 	    }})
 	}
 }
