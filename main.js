@@ -5,7 +5,7 @@ const fs = require("fs")
 
 // Variables
 const violet = new Violet.Client({
-	shards: "auto"
+	shards: [0, 1]
 })
 
 violet.commands = new Discord.Collection()

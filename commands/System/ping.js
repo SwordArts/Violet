@@ -18,9 +18,10 @@ module.exports = class PingCommand extends BaseCommand {
 	async run(violet, msg) {
 		const m = await msg.channel.send("Pong...?")
 		m.edit("🏓 Pong!", {embed: {
-		color: 0x47aef0,
-		description: `💗 Heartbeat (WS): \`${violet.ws.ping}ms\`
-		📬 Message: \`${m.createdTimestamp - msg.createdTimestamp}ms\``
-	}})
+			color: 0x47aef0,
+			description: `💗 Websocket: \`${violet.ws.ping}ms\`
+		📬 Message: \`${m.createdTimestamp - msg.createdTimestamp}ms\`
+		Shard: \`${msg.guild.shard.id}\``
+		}})
 	}
 }
