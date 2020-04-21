@@ -6,7 +6,8 @@ class HelpCommand extends BaseCommand {
 			info: {
 				name: "help",
 				description: "Shows all the commands that I have.",
-				usage: "help [command]"
+				usage: "help [command]",
+                examples: ["help", "help ping"]
 			},
 			settings: {
 				aliases: ["h", "commands"],
@@ -15,12 +16,12 @@ class HelpCommand extends BaseCommand {
 		})
 	}
 
-	async run(violet, msg, args) {
+	async run(violet, msg, args, prefix) {
+        const p = prefix.replace("<@!622495144092106766>", "@Violet#5802 ").replace("<@622495144092106766>", "@Violet#5802 ")
         if(!args[0]) {
             let fields = []
-
-            for (var i = 0; i < violet.commands.categories.length; i++) {
-                const categories = violet.commands.categories;
+            const categories = violet.commands.categories.filter(c => c !== "Developer")
+            for (var i = 0; i < categories.length; i++) {
                 const cmds = violet.commands.filter(c => c.settings.category === categories[i])
                 .map(c => `\`${c.info.name}\``)
                 fields[i] = {
@@ -56,7 +57,7 @@ class HelpCommand extends BaseCommand {
                         name: `Details for the command ${args[0]}.`,
                         icon_url: msg.author.displayAvatarURL()
                     },
-                    description: `\`${cmd.info.usage}\`\n${cmd.info.description}\nAliases: ${cmd.settings.aliases.length !== 0 ? `\`${cmd.settings.aliases.join("`, `")}\`` : "None."}`,
+                    description: `\`${cmd.info.usage}\`\n${cmd.info.description}\nAliases: ${cmd.settings.aliases.length !== 0 ? `\`${cmd.settings.aliases.join("`, `")}\`` : "None."}\nExample(s): \`${p}${cmd.info.examples.join(`\`, \`${p}`)}\``,
                     footer: {
                     	text: `[] is optional, <> is needed. Don't include <> or []. Requested by ${msg.author.tag}`
                     },

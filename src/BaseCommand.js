@@ -3,7 +3,8 @@ class VioletBaseCommand {
 		this.info = {
 			name: opts.info.name,
 			description: opts.info.description,
-			usage: opts.info.usage
+			usage: opts.info.usage,
+			examples: opts.info.examples
 		}
 		this.settings = {
 			aliases: opts.settings.aliases,

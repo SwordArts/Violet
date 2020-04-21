@@ -19,7 +19,7 @@ module.exports = (violet, msg) => {
         cmd = violet.commands.get(command) || violet.commands.get(violet.commands.aliases.get(command))
 
         if(cmd.settings.ownerOnly && msg.author.id !== "439373663905513473" || cmd.settings.category === "Developer" && msg.author.id !== "439373663905513473") return msg.channel.send("Sorry, but I can't allow you to do that.")
-        cmd.run(violet, msg, args)
+        cmd.run(violet, msg, args, prefix)
     } catch(err) {
         violet.log.error(err)
     }
